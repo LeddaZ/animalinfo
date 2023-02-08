@@ -2,6 +2,7 @@
 # with Machine Learning for Kids
 
 # Required dependencies
+import github3
 import os
 import tkinter as tk
 import tkinter.font as TkFont
@@ -17,13 +18,18 @@ from tkinter import scrolledtext
 load_dotenv()
 key = os.getenv("API_KEY")
 
+# Gets the current commit hash from GitHub
+gh = github3.login(token = os.getenv('GITHUB_TOKEN'))
+repository = gh.repository(owner = 'LeddaZ', repository = 'animalinfo')
+lastCommitHash = repository.branch("main").latest_sha()
+
 # Trains the ML model to recognize images
 detector = MLforKidsImageProject(key)
 detector.train_model()
 
 # Creates the window
 window = tk.Tk()
-window.title("Animal Info")
+window.title("Animal Info " + lastCommitHash[:8])
 window.resizable(False, False)
 
 # Fonts
