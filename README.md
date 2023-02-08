@@ -1,6 +1,11 @@
 # animalinfo
 School project to recognize an animal from an image and give information about it.
 
+It's currently trained to recognize:
+- Capybaras
+- Cats
+- Dogs
+
 ## Requirements
 - Python 3.10 (tensorflow is not yet compatible with 3.11); a [Conda](https://docs.conda.io/en/latest/) `environment.yml` file is included for people who have 3.11 installed and don't want multiple versions.
 - An API key from [Machine Learning for Kids](https://machinelearningforkids.co.uk/).
