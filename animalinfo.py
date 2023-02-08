@@ -49,7 +49,7 @@ button.grid(row = 2, column = 1, pady = 5)
 # Language selector
 combo_value = tk.StringVar()
 combobox = ttk.Combobox(window, textvariable=combo_value)
-combobox.grid(row = 2, column = 2)
+combobox.grid(row = 3, column = 1, pady = 5)
 combobox["values"] = ("English", "Italiano")
 combobox["state"] = "readonly"
 combobox.current(0)
@@ -77,7 +77,7 @@ def recognize_image():
 
     img = ImageTk.PhotoImage(file = str.lower("assets/%s.jpg" % label))
     imageLabel = tk.Label(window, image = img)
-    imageLabel.grid(row = 4, column = 1)
+    imageLabel.grid(row = 5, column = 1)
 
     print("I'm %d%% sure this is a %s." % (confidence, str.lower(label)))
 
@@ -90,14 +90,14 @@ def recognize_image():
             label = page_titles_it[2]
 
     animalLabel = tk.Label(window, text = label, font = animalFont)
-    animalLabel.grid(row = 3, column = 1)
+    animalLabel.grid(row = 4, column = 1)
 
     wiki = wikipediaapi.Wikipedia(wiki_languages[combobox.current()])
     page = wiki.page(label)
     desc = page.summary
 
     desc_area = scrolledtext.ScrolledText(window, wrap = tk.WORD, width = 50, height = 10, font = descFont)    
-    desc_area.grid(row = 5, column = 1, pady = 10)
+    desc_area.grid(row = 6, column = 1, pady = 10)
 
     desc_area.tag_configure("tag-center", justify = "center")
     desc_area.insert(tk.END, desc, "tag-center")
