@@ -1,0 +1,7 @@
+numpy
+Pillow
+python-dotenv
+scipy
+tensorflow
+tensorflow-hub
+wikipedia-api

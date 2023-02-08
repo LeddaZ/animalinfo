@@ -1,0 +1,9 @@
+name: animalinfo
+dependencies:
+  - numpy
+  - Pillow
+  - python-dotenv
+  - scipy
+  - tensorflow
+  - tensorflow-hub
+  - conda-forge::wikipedia-api
