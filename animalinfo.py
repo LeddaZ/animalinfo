@@ -20,8 +20,8 @@ load_dotenv()
 key = os.getenv("API_KEY")
 
 # Gets the current commit hash from GitHub
-gh = github3.login(token = os.getenv('GITHUB_TOKEN'))
-repository = gh.repository(owner = 'LeddaZ', repository = 'animalinfo')
+gh = github3.login(token = os.getenv("GITHUB_TOKEN"))
+repository = gh.repository(owner = "LeddaZ", repository = "animalinfo")
 lastCommitHash = repository.branch("main").latest_sha()
 
 # Trains the ML model to recognize images
@@ -50,20 +50,25 @@ button.grid(row = 2, column = 1, pady = 5)
 combo_value = tk.StringVar()
 combobox = ttk.Combobox(window, textvariable=combo_value)
 combobox.grid(row = 2, column = 2)
-combobox['values'] = ('English', 'Italiano')
-combobox['state'] = 'readonly'
+combobox["values"] = ("English", "Italiano")
+combobox["state"] = "readonly"
 combobox.current(0)
 
 # Language-dependent data
-wiki_languages = ['en', 'it']
-page_titles_en = ['Dog', 'Cat']
-page_titles_it = ['Cane', 'Gatto']
+wiki_languages = ["en", "it"]
+page_titles_en = ["Dog", "Cat"]
+page_titles_it = ["Cane", "Gatto"]
 
 # Chooses an image to pass to the ML model, gets the result and displays the
 # appropriate image and Wikipedia description
 def recognize_image():
     global img
-    f_types = [('Image files', '*.bmp *.jpg *.jpeg *.png')]
+    global animalLabel
+    try:
+        animalLabel.config(text = " ")
+    except NameError:
+        pass
+    f_types = [("Image files", "*.bmp *.jpg *.jpeg *.png")]
     filename = filedialog.askopenfilename(filetypes = f_types)
 
     demo = detector.prediction(filename)
@@ -92,10 +97,10 @@ def recognize_image():
     desc_area = scrolledtext.ScrolledText(window, wrap = tk.WORD, width = 50, height = 10, font = descFont)    
     desc_area.grid(row = 5, column = 1, pady = 10)
 
-    desc_area.tag_configure('tag-center', justify='center')
-    desc_area.insert(tk.END, desc, 'tag-center')
+    desc_area.tag_configure("tag-center", justify = "center")
+    desc_area.insert(tk.END, desc, "tag-center")
 
-    desc_area.configure(state ='disabled')
+    desc_area.configure(state = "disabled")
 
 # Keeps the window open
 window.mainloop()
