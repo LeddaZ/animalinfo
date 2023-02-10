@@ -56,8 +56,8 @@ combobox.current(0)
 
 # Language-dependent data
 wiki_languages = ["en", "it"]
-page_titles_en = ["Dog", "Cat", "Capybara"]
-page_titles_it = ["Cane", "Gatto", "Capibara"]
+page_titles_en = ["Dog", "Cat", "Capybara", "Frog"]
+page_titles_it = ["Cane", "Gatto", "Capibara", "Rana"]
 
 # Chooses an image to pass to the ML model, gets the result and displays the
 # appropriate image and Wikipedia description
@@ -88,6 +88,8 @@ def recognize_image():
             label = page_titles_it[1]
         elif((label == page_titles_en[2])):
             label = page_titles_it[2]
+        elif((label == page_titles_en[3])):
+            label = page_titles_it[3]
 
     animalLabel = tk.Label(window, text = label, font = animalFont)
     animalLabel.grid(row = 4, column = 1)
