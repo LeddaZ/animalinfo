@@ -6,6 +6,7 @@ It's currently trained to recognize:
 - Cats
 - Dogs
 - Frogs
+- Pigs
 - Rabbits
 
 ## [Demonstration](https://i.imgur.com/6S2eJtJ.mp4)
