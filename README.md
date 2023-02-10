@@ -8,6 +8,7 @@ It's currently trained to recognize:
 - Frogs
 - Pigs
 - Rabbits
+- Snakes
 
 ## [Demonstration](https://i.imgur.com/6S2eJtJ.mp4)
 

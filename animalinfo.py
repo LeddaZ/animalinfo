@@ -56,8 +56,8 @@ combobox.current(0)
 
 # Language-dependent data
 wiki_languages = ["en", "it"]
-page_titles_en = ["Dog", "Cat", "Capybara", "Frog", "Rabbit", "Pig"]
-page_titles_it = ["Cane", "Gatto", "Capibara", "Rana", "Coniglio", "Maiale"]
+page_titles_en = ["Dog", "Cat", "Capybara", "Frog", "Rabbit", "Pig", "Snake"]
+page_titles_it = ["Cane", "Gatto", "Capibara", "Rana", "Coniglio", "Maiale", "Serpente"]
 
 # Chooses an image to pass to the ML model, gets the result and displays the
 # appropriate image and Wikipedia description
@@ -95,6 +95,8 @@ def recognize_image():
                 label = page_titles_it[4]
             elif((label == page_titles_en[5])):
                 label = page_titles_it[5]
+            elif((label == page_titles_en[6])):
+                label = page_titles_it[6]
 
         wiki = wikipediaapi.Wikipedia(wiki_languages[combobox.current()])
         page = wiki.page(label)
