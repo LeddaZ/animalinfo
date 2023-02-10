@@ -80,6 +80,8 @@ def recognize_image():
         imageLabel = tk.Label(window, image = img)
         imageLabel.grid(row = 5, column = 1)
 
+        print("I'm %d%% sure this is a %s." % (confidence, str.lower(label)))
+
         if(combobox.current() == 1):
             if(label == page_titles_en[0]):
                 label = page_titles_it[0]
@@ -112,10 +114,10 @@ def recognize_image():
 
         desc_area.configure(state = "disabled")
 
+        print("I'm %d%% sure this isn't a supported animal." % (confidence))
+
     animalLabel = tk.Label(window, text = label, font = animalFont)
     animalLabel.grid(row = 4, column = 1)
-
-    print("I'm %d%% sure this is a %s." % (confidence, str.lower(label)))
 
 # Keeps the window open
 window.mainloop()
