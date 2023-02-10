@@ -75,36 +75,45 @@ def recognize_image():
     label = demo["class_name"]
     confidence = demo["confidence"]
 
-    img = ImageTk.PhotoImage(file = str.lower("assets/%s.jpg" % label))
-    imageLabel = tk.Label(window, image = img)
-    imageLabel.grid(row = 5, column = 1)
+    if(label != "Other"):
+        img = ImageTk.PhotoImage(file = str.lower("assets/%s.jpg" % label))
+        imageLabel = tk.Label(window, image = img)
+        imageLabel.grid(row = 5, column = 1)
 
-    print("I'm %d%% sure this is a %s." % (confidence, str.lower(label)))
+        if(combobox.current() == 1):
+            if(label == page_titles_en[0]):
+                label = page_titles_it[0]
+            elif((label == page_titles_en[1])):
+                label = page_titles_it[1]
+            elif((label == page_titles_en[2])):
+                label = page_titles_it[2]
+            elif((label == page_titles_en[3])):
+                label = page_titles_it[3]
 
-    if(combobox.current() == 1):
-        if(label == page_titles_en[0]):
-            label = page_titles_it[0]
-        elif((label == page_titles_en[1])):
-            label = page_titles_it[1]
-        elif((label == page_titles_en[2])):
-            label = page_titles_it[2]
-        elif((label == page_titles_en[3])):
-            label = page_titles_it[3]
+        wiki = wikipediaapi.Wikipedia(wiki_languages[combobox.current()])
+        page = wiki.page(label)
+        desc = page.summary
+
+        desc_area = scrolledtext.ScrolledText(window, wrap = tk.WORD, width = 50, height = 10, font = descFont)    
+        desc_area.grid(row = 6, column = 1, pady = 10)
+
+        desc_area.tag_configure("tag-center", justify = "center")
+        desc_area.insert(tk.END, desc, "tag-center")
+
+        desc_area.configure(state = "disabled")
+    else:
+        desc_area = scrolledtext.ScrolledText(window, wrap = tk.WORD, width = 50, height = 10, font = descFont)    
+        desc_area.grid(row = 6, column = 1, pady = 10)
+
+        desc_area.tag_configure("tag-center", justify = "center")
+        desc_area.insert(tk.END, "This animal is not supported by the model.", "tag-center")
+
+        desc_area.configure(state = "disabled")
 
     animalLabel = tk.Label(window, text = label, font = animalFont)
     animalLabel.grid(row = 4, column = 1)
 
-    wiki = wikipediaapi.Wikipedia(wiki_languages[combobox.current()])
-    page = wiki.page(label)
-    desc = page.summary
-
-    desc_area = scrolledtext.ScrolledText(window, wrap = tk.WORD, width = 50, height = 10, font = descFont)    
-    desc_area.grid(row = 6, column = 1, pady = 10)
-
-    desc_area.tag_configure("tag-center", justify = "center")
-    desc_area.insert(tk.END, desc, "tag-center")
-
-    desc_area.configure(state = "disabled")
+    print("I'm %d%% sure this is a %s." % (confidence, str.lower(label)))
 
 # Keeps the window open
 window.mainloop()
