@@ -38,7 +38,7 @@ class MLforKidsImageProject:
         )
         self.scratchkey = scratchkey
         try:
-            apiurl = self.__switchToTemporarySite(
+            apiurl = self.__switch_to_temporary_site(
                 "https://machinelearningforkids.co.uk/api/scratch/" +
                 scratchkey + "/train")
             with urllib.request.urlopen(apiurl) as url:
@@ -69,7 +69,7 @@ class MLforKidsImageProject:
             os.path.expanduser(os.path.join(cachedir, cachelocation)))
         for trainingitem in self.__downloaded_training_images_list:
             try:
-                tf.keras.utils.get_file(origin=self.__switchToTemporarySite(
+                tf.keras.utils.get_file(origin=self.__switch_to_temporary_site(
                     trainingitem["imageurl"]),
                                         cache_dir=cachedir,
                                         cache_subdir=os.path.join(
@@ -152,7 +152,7 @@ class MLforKidsImageProject:
     # TODO: remove this function as soon as Cloudflare have
     #  stopped breaking Python apps
     #
-    def __switchToTemporarySite(self, url):
+    def __switch_to_temporary_site(self, url):
         return url.replace(
             "https://machinelearningforkids.co.uk/api/scratch/",
             "https://mlforkids-api.j8clybxvjr0.us-south.codeengine.appdomain.cloud/api/scratch/"

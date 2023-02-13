@@ -82,25 +82,25 @@ def recognize_image():
 
     if (label != "Other"):
         img = ImageTk.PhotoImage(file=str.lower("assets/%s.jpg" % label))
-        imageLabel = tk.Label(window, image=img)
-        imageLabel.grid(row=5, column=1)
+        imagelabel = tk.Label(window, image=img)
+        imagelabel.grid(row=5, column=1)
 
         print("I'm %d%% sure this is a %s." % (confidence, str.lower(label)))
 
         if (combobox.current() == 1):
             if (label == page_titles_en[0]):
                 label = page_titles_it[0]
-            elif ((label == page_titles_en[1])):
+            elif (label == page_titles_en[1]):
                 label = page_titles_it[1]
-            elif ((label == page_titles_en[2])):
+            elif (label == page_titles_en[2]):
                 label = page_titles_it[2]
-            elif ((label == page_titles_en[3])):
+            elif (label == page_titles_en[3]):
                 label = page_titles_it[3]
-            elif ((label == page_titles_en[4])):
+            elif (label == page_titles_en[4]):
                 label = page_titles_it[4]
-            elif ((label == page_titles_en[5])):
+            elif (label == page_titles_en[5]):
                 label = page_titles_it[5]
-            elif ((label == page_titles_en[6])):
+            elif (label == page_titles_en[6]):
                 label = page_titles_it[6]
 
         wiki = wikipediaapi.Wikipedia(wiki_languages[combobox.current()])
