@@ -1,7 +1,6 @@
 name: animalinfo
 dependencies:
   - conda-forge::github3.py
-  - conda-forge::wikipedia-api
   - numpy
   - Pillow
   - python-dotenv

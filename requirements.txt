@@ -1,8 +1,8 @@
 github3.py
 numpy
 Pillow
+pymediawiki
 python-dotenv
 scipy
 tensorflow
 tensorflow-hub
-wikipedia-api

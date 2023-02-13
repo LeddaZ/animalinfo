@@ -6,9 +6,9 @@ import github3
 import os
 import tkinter as tk
 import tkinter.font as TkFont
-import wikipediaapi
 
 from dotenv import load_dotenv
+from mediawiki import MediaWiki
 from mlforkids import MLforKidsImageProject
 from PIL import ImageTk
 from tkinter import filedialog
@@ -103,7 +103,7 @@ def recognize_image():
             elif (label == page_titles_en[6]):
                 label = page_titles_it[6]
 
-        wiki = wikipediaapi.Wikipedia(wiki_languages[combobox.current()])
+        wiki = MediaWiki(lang=wiki_languages[combobox.current()])
         page = wiki.page(label)
         desc = page.summary
 
