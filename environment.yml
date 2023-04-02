@@ -1,9 +1,0 @@
-name: animalinfo
-dependencies:
-  - conda-forge::github3.py
-  - numpy
-  - Pillow
-  - python-dotenv
-  - scipy
-  - tensorflow
-  - tensorflow-hub
